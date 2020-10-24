@@ -1,13 +1,11 @@
 package com.company;
 
-import javafx.scene.shape.StrokeLineCap;
-
 public class Account {
     private String firstName;
     private String lastName;
     private Department department;
     private String email;
-    private String password = generatePassword();
+    private String password;
     private int mailboxCapacity;
 
     public Account(String firstName, String lastName, Department department) {
@@ -16,6 +14,8 @@ public class Account {
         this.department = department;
         this.mailboxCapacity = 100;
         this.email = generateEmail(firstName, lastName, department);
+        this.password = generatePassword();
+        System.out.println(this.firstName + " " + this.lastName +"'s current password is: " + password);
     }
 
     public enum Department{
@@ -25,7 +25,7 @@ public class Account {
     }
 
     private String generateEmail(String firstName, String lastName, Department department){
-        return firstName.toLowerCase() + "," + lastName.toLowerCase() + "@" + department.toString().toLowerCase() + ".company.com";
+        return firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department.toString().toLowerCase() + ".company.com";
     }
 
     private String generatePassword(){
@@ -63,14 +63,22 @@ public class Account {
     }
 
     public String getEmail() {
+        String email = this.email;
         return email;
     }
 
     public int getMailboxCapacity() {
-        return mailboxCapacity;
+        int capacity = this.mailboxCapacity;
+        return capacity;
     }
 
     public String getName(){
-        return firstName + " " + lastName;
+        String name = firstName + " " + lastName;
+        return name;
+    }
+
+    public String getPassword(){
+        String pass = this.password;
+        return pass;
     }
 }
